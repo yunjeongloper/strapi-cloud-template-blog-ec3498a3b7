@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "washings",
+  "info": {
+    "singularName": "washing",
+    "pluralName": "washings",
+    "displayName": "Washing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "washingId": {
+      "type": "uid"
+    },
+    "filtration": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::filtration.filtration",
+      "inversedBy": "washings"
+    },
+    "bottling": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bottling.bottling",
+      "mappedBy": "washing"
+    }
+  }
+}

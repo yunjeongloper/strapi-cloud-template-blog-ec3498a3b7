@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "storages",
+  "info": {
+    "singularName": "storage",
+    "pluralName": "storages",
+    "displayName": "Storage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "storageId": {
+      "type": "uid"
+    },
+    "storageName": {
+      "type": "string"
+    },
+    "storageType": {
+      "type": "string"
+    },
+    "capacity": {
+      "type": "integer"
+    },
+    "currentVolume": {
+      "type": "integer"
+    },
+    "location": {
+      "type": "string"
+    },
+    "storageStatus": {
+      "type": "string"
+    },
+    "filtration": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filtration.filtration",
+      "mappedBy": "storage"
+    }
+  }
+}

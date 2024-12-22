@@ -369,6 +369,332 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBlendingBlending extends Struct.CollectionTypeSchema {
+  collectionName: 'blendings';
+  info: {
+    displayName: 'Blending';
+    pluralName: 'blendings';
+    singularName: 'blending';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blendedSpiritId: Schema.Attribute.UID;
+    blendingId: Schema.Attribute.UID;
+    blendingRatio: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    finalVolume: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blending.blending'
+    > &
+      Schema.Attribute.Private;
+    newSpiritId: Schema.Attribute.UID;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
+  collectionName: 'bottlings';
+  info: {
+    displayName: 'Bottling';
+    pluralName: 'bottlings';
+    singularName: 'bottling';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    bottlingCount: Schema.Attribute.Integer;
+    bottlingDateTime: Schema.Attribute.DateTime;
+    bottlingId: Schema.Attribute.UID;
+    comment: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    defectiveCount: Schema.Attribute.Integer;
+    endDateTime: Schema.Attribute.DateTime;
+    item: Schema.Attribute.Relation<'oneToOne', 'api::item.item'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bottling.bottling'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    spirit: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
+    startDateTime: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    washing: Schema.Attribute.Relation<'oneToOne', 'api::washing.washing'>;
+  };
+}
+
+export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
+  collectionName: 'filtrations';
+  info: {
+    description: '';
+    displayName: 'Filtration';
+    pluralName: 'filtrations';
+    singularName: 'filtration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    abv: Schema.Attribute.Decimal;
+    admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    endDateTime: Schema.Attribute.DateTime;
+    endPressure: Schema.Attribute.Decimal;
+    filterLength: Schema.Attribute.Decimal;
+    filterQuantity: Schema.Attribute.Integer;
+    filterType: Schema.Attribute.Enumeration<['carbon']>;
+    filtrationId: Schema.Attribute.UID;
+    filtrationType: Schema.Attribute.Enumeration<['non-chill', 'chill']>;
+    finalVolume: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filtration.filtration'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    spirit: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
+    startDateTime: Schema.Attribute.DateTime;
+    startPressure: Schema.Attribute.Decimal;
+    startVolume: Schema.Attribute.Integer;
+    storage: Schema.Attribute.Relation<'oneToOne', 'api::storage.storage'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    washings: Schema.Attribute.Relation<'oneToMany', 'api::washing.washing'>;
+  };
+}
+
+export interface ApiItemItem extends Struct.CollectionTypeSchema {
+  collectionName: 'items';
+  info: {
+    displayName: 'Item';
+    pluralName: 'items';
+    singularName: 'item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    itemDescription: Schema.Attribute.Text;
+    itemId: Schema.Attribute.UID;
+    itemName: Schema.Attribute.String;
+    itemType: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::item.item'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
+  collectionName: 'movements';
+  info: {
+    displayName: 'Movement';
+    pluralName: 'movements';
+    singularName: 'movement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fromStorage: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::movement.movement'
+    > &
+      Schema.Attribute.Private;
+    movementDate: Schema.Attribute.DateTime;
+    movementId: Schema.Attribute.UID;
+    movementType: Schema.Attribute.Enumeration<['simple', 'aging']>;
+    publishedAt: Schema.Attribute.DateTime;
+    spiritId: Schema.Attribute.UID;
+    toStroage: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
+  collectionName: 'proofings';
+  info: {
+    displayName: 'Proofing';
+    pluralName: 'proofings';
+    singularName: 'proofing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    abv: Schema.Attribute.Decimal;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    finalVolume: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::proofing.proofing'
+    > &
+      Schema.Attribute.Private;
+    proofingDate: Schema.Attribute.DateTime;
+    proofingId: Schema.Attribute.UID;
+    publishedAt: Schema.Attribute.DateTime;
+    rawSpiritVolume: Schema.Attribute.Integer;
+    spirit_id: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    waterVolume: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
+  collectionName: 'spirits';
+  info: {
+    description: '';
+    displayName: 'Spirit';
+    pluralName: 'spirits';
+    singularName: 'spirit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    abv: Schema.Attribute.Decimal;
+    batchNumber: Schema.Attribute.String;
+    bottlings: Schema.Attribute.Relation<'oneToMany', 'api::bottling.bottling'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currentLocation: Schema.Attribute.String;
+    currentVolume: Schema.Attribute.Integer;
+    distillationEndDateTime: Schema.Attribute.DateTime;
+    distillationStartDateTime: Schema.Attribute.DateTime;
+    filtrations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filtration.filtration'
+    >;
+    initialVolume: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spirit.spirit'
+    > &
+      Schema.Attribute.Private;
+    proofings: Schema.Attribute.Relation<'oneToMany', 'api::proofing.proofing'>;
+    publishedAt: Schema.Attribute.DateTime;
+    serialNumber: Schema.Attribute.String;
+    spiritId: Schema.Attribute.UID;
+    spiritStatus: Schema.Attribute.Enumeration<
+      ['distilled', 'blended', 'aged', 'expired', 'disposed']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
+  collectionName: 'storages';
+  info: {
+    displayName: 'Storage';
+    pluralName: 'storages';
+    singularName: 'storage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    capacity: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currentVolume: Schema.Attribute.Integer;
+    filtration: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::filtration.filtration'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::storage.storage'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    storageId: Schema.Attribute.UID;
+    storageName: Schema.Attribute.String;
+    storageStatus: Schema.Attribute.String;
+    storageType: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
+  collectionName: 'washings';
+  info: {
+    displayName: 'Washing';
+    pluralName: 'washings';
+    singularName: 'washing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bottling: Schema.Attribute.Relation<'oneToOne', 'api::bottling.bottling'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    filtration: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::filtration.filtration'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::washing.washing'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    washingId: Schema.Attribute.UID;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -878,6 +1204,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::blending.blending': ApiBlendingBlending;
+      'api::bottling.bottling': ApiBottlingBottling;
+      'api::filtration.filtration': ApiFiltrationFiltration;
+      'api::item.item': ApiItemItem;
+      'api::movement.movement': ApiMovementMovement;
+      'api::proofing.proofing': ApiProofingProofing;
+      'api::spirit.spirit': ApiSpiritSpirit;
+      'api::storage.storage': ApiStorageStorage;
+      'api::washing.washing': ApiWashingWashing;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

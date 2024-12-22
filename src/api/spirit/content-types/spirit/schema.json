@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "spirits",
+  "info": {
+    "singularName": "spirit",
+    "pluralName": "spirits",
+    "displayName": "Spirit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "spiritId": {
+      "type": "uid"
+    },
+    "serialNumber": {
+      "type": "string"
+    },
+    "spiritStatus": {
+      "type": "enumeration",
+      "enum": [
+        "distilled",
+        "blended",
+        "aged",
+        "expired",
+        "disposed"
+      ]
+    },
+    "distillationStartDateTime": {
+      "type": "datetime"
+    },
+    "distillationEndDateTime": {
+      "type": "datetime"
+    },
+    "batchNumber": {
+      "type": "string"
+    },
+    "abv": {
+      "type": "decimal"
+    },
+    "initialVolume": {
+      "type": "integer"
+    },
+    "currentVolume": {
+      "type": "integer"
+    },
+    "currentLocation": {
+      "type": "string"
+    },
+    "proofings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::proofing.proofing",
+      "mappedBy": "spirit_id"
+    },
+    "filtrations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::filtration.filtration",
+      "mappedBy": "spirit"
+    },
+    "bottlings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bottling.bottling",
+      "mappedBy": "spirit"
+    }
+  }
+}

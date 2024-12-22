@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blendings",
+  "info": {
+    "singularName": "blending",
+    "pluralName": "blendings",
+    "displayName": "Blending"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blendingId": {
+      "type": "uid"
+    },
+    "blendedSpiritId": {
+      "type": "uid"
+    },
+    "newSpiritId": {
+      "type": "uid"
+    },
+    "blendingRatio": {
+      "type": "integer"
+    },
+    "finalVolume": {
+      "type": "integer"
+    }
+  }
+}

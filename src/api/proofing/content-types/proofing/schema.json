@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proofings",
+  "info": {
+    "singularName": "proofing",
+    "pluralName": "proofings",
+    "displayName": "Proofing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "proofingId": {
+      "type": "uid"
+    },
+    "spirit_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::spirit.spirit",
+      "inversedBy": "proofings"
+    },
+    "proofingDate": {
+      "type": "datetime"
+    },
+    "rawSpiritVolume": {
+      "type": "integer"
+    },
+    "waterVolume": {
+      "type": "integer"
+    },
+    "finalVolume": {
+      "type": "integer"
+    },
+    "abv": {
+      "type": "decimal"
+    }
+  }
+}

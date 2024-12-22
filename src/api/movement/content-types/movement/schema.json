@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "movements",
+  "info": {
+    "singularName": "movement",
+    "pluralName": "movements",
+    "displayName": "Movement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "movementId": {
+      "type": "uid"
+    },
+    "spiritId": {
+      "type": "uid"
+    },
+    "fromStorage": {
+      "type": "string"
+    },
+    "toStroage": {
+      "type": "string"
+    },
+    "movementDate": {
+      "type": "datetime"
+    },
+    "movementType": {
+      "type": "enumeration",
+      "enum": [
+        "simple",
+        "aging"
+      ]
+    }
+  }
+}

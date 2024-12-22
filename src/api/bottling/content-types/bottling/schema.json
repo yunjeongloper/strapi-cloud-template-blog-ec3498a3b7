@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bottlings",
+  "info": {
+    "singularName": "bottling",
+    "pluralName": "bottlings",
+    "displayName": "Bottling"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bottlingId": {
+      "type": "uid"
+    },
+    "washing": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::washing.washing",
+      "inversedBy": "bottling"
+    },
+    "spirit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::spirit.spirit",
+      "inversedBy": "bottlings"
+    },
+    "item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::item.item"
+    },
+    "bottlingDateTime": {
+      "type": "datetime"
+    },
+    "startDateTime": {
+      "type": "datetime"
+    },
+    "endDateTime": {
+      "type": "datetime"
+    },
+    "bottlingCount": {
+      "type": "integer"
+    },
+    "defectiveCount": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}
