@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "itemId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "itemName": {
       "type": "string"

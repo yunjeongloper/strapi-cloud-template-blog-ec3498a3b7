@@ -4,7 +4,8 @@
   "info": {
     "singularName": "storage",
     "pluralName": "storages",
-    "displayName": "Storage"
+    "displayName": "Storage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "storageId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "storageName": {
       "type": "string"

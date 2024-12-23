@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "washingId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "filtration": {
       "type": "relation",

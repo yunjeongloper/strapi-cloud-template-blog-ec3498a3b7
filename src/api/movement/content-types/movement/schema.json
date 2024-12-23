@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "movementId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "spiritId": {
       "type": "uid"
@@ -28,10 +30,7 @@
     },
     "movementType": {
       "type": "enumeration",
-      "enum": [
-        "simple",
-        "aging"
-      ]
+      "enum": ["simple", "aging"]
     }
   }
 }

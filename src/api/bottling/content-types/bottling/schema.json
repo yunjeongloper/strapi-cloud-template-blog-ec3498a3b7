@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "bottlingId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "washing": {
       "type": "relation",

@@ -13,20 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "spiritId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "serialNumber": {
       "type": "string"
     },
     "spiritStatus": {
       "type": "enumeration",
-      "enum": [
-        "distilled",
-        "blended",
-        "aged",
-        "expired",
-        "disposed"
-      ]
+      "enum": ["distilled", "blended", "aged", "expired", "disposed"]
     },
     "distillationStartDateTime": {
       "type": "datetime"

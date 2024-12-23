@@ -381,7 +381,9 @@ export interface ApiBlendingBlending extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blendedSpiritId: Schema.Attribute.UID;
-    blendingId: Schema.Attribute.UID;
+    blendingId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     blendingRatio: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -415,7 +417,9 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
     bottlingCount: Schema.Attribute.Integer;
     bottlingDateTime: Schema.Attribute.DateTime;
-    bottlingId: Schema.Attribute.UID;
+    bottlingId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -461,7 +465,9 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
     filterType: Schema.Attribute.Enumeration<['carbon']>;
-    filtrationId: Schema.Attribute.UID;
+    filtrationId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     filtrationType: Schema.Attribute.Enumeration<['non-chill', 'chill']>;
     finalVolume: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -498,7 +504,9 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     itemDescription: Schema.Attribute.Text;
-    itemId: Schema.Attribute.UID;
+    itemId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     itemName: Schema.Attribute.String;
     itemType: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -533,7 +541,9 @@ export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     movementDate: Schema.Attribute.DateTime;
-    movementId: Schema.Attribute.UID;
+    movementId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     movementType: Schema.Attribute.Enumeration<['simple', 'aging']>;
     publishedAt: Schema.Attribute.DateTime;
     spiritId: Schema.Attribute.UID;
@@ -567,7 +577,9 @@ export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     proofingDate: Schema.Attribute.DateTime;
-    proofingId: Schema.Attribute.UID;
+    proofingId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     publishedAt: Schema.Attribute.DateTime;
     rawSpiritVolume: Schema.Attribute.Integer;
     spirit_id: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
@@ -614,7 +626,9 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
     proofings: Schema.Attribute.Relation<'oneToMany', 'api::proofing.proofing'>;
     publishedAt: Schema.Attribute.DateTime;
     serialNumber: Schema.Attribute.String;
-    spiritId: Schema.Attribute.UID;
+    spiritId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     spiritStatus: Schema.Attribute.Enumeration<
       ['distilled', 'blended', 'aged', 'expired', 'disposed']
     >;
@@ -627,6 +641,7 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
 export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
   collectionName: 'storages';
   info: {
+    description: '';
     displayName: 'Storage';
     pluralName: 'storages';
     singularName: 'storage';
@@ -652,7 +667,9 @@ export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    storageId: Schema.Attribute.UID;
+    storageId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     storageName: Schema.Attribute.String;
     storageStatus: Schema.Attribute.String;
     storageType: Schema.Attribute.String;
@@ -691,7 +708,9 @@ export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    washingId: Schema.Attribute.UID;
+    washingId: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
   };
 }
 

@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "blendingId": {
-      "type": "uid"
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     },
     "blendedSpiritId": {
       "type": "uid"
