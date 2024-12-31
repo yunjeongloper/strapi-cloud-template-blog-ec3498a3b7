@@ -40,6 +40,9 @@
       "relation": "oneToOne",
       "target": "api::filtration.filtration",
       "mappedBy": "storage"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }

@@ -25,7 +25,7 @@
     },
     "filtrationType": {
       "type": "enumeration",
-      "enum": ["non-chill", "chill"]
+      "enum": ["Non-chill", "Chill", "Final"]
     },
     "startDateTime": {
       "type": "datetime"
@@ -44,7 +44,7 @@
     },
     "filterType": {
       "type": "enumeration",
-      "enum": ["carbon"]
+      "enum": ["Carbon"]
     },
     "filterQuantity": {
       "type": "integer"

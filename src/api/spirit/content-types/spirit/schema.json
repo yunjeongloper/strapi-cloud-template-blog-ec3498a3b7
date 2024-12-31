@@ -22,12 +22,18 @@
     },
     "spiritStatus": {
       "type": "enumeration",
-      "enum": ["distilled", "blended", "aged", "expired", "disposed"]
+      "enum": [
+        "Distilled",
+        "Blended",
+        "Aged",
+        "Expired",
+        "Disposed"
+      ]
     },
-    "distillationStartDateTime": {
+    "startAt": {
       "type": "datetime"
     },
-    "distillationEndDateTime": {
+    "endAt": {
       "type": "datetime"
     },
     "batchNumber": {
@@ -62,6 +68,9 @@
       "relation": "oneToMany",
       "target": "api::bottling.bottling",
       "mappedBy": "spirit"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }

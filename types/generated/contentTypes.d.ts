@@ -464,11 +464,13 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     endPressure: Schema.Attribute.Decimal;
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
-    filterType: Schema.Attribute.Enumeration<['carbon']>;
+    filterType: Schema.Attribute.Enumeration<['Carbon']>;
     filtrationId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
-    filtrationType: Schema.Attribute.Enumeration<['non-chill', 'chill']>;
+    filtrationType: Schema.Attribute.Enumeration<
+      ['Non-chill', 'Chill', 'Final']
+    >;
     finalVolume: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -605,13 +607,13 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
     abv: Schema.Attribute.Decimal;
     batchNumber: Schema.Attribute.String;
     bottlings: Schema.Attribute.Relation<'oneToMany', 'api::bottling.bottling'>;
+    comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currentLocation: Schema.Attribute.String;
     currentVolume: Schema.Attribute.Integer;
-    distillationEndDateTime: Schema.Attribute.DateTime;
-    distillationStartDateTime: Schema.Attribute.DateTime;
+    endAt: Schema.Attribute.DateTime;
     filtrations: Schema.Attribute.Relation<
       'oneToMany',
       'api::filtration.filtration'
@@ -630,8 +632,9 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     spiritStatus: Schema.Attribute.Enumeration<
-      ['distilled', 'blended', 'aged', 'expired', 'disposed']
+      ['Distilled', 'Blended', 'Aged', 'Expired', 'Disposed']
     >;
+    startAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -651,6 +654,7 @@ export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     capacity: Schema.Attribute.Integer;
+    comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

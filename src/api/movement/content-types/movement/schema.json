@@ -30,7 +30,7 @@
     },
     "movementType": {
       "type": "enumeration",
-      "enum": ["simple", "aging"]
+      "enum": ["Normal", "Aging"]
     }
   }
 }
