@@ -4,7 +4,8 @@
   "info": {
     "singularName": "movement",
     "pluralName": "movements",
-    "displayName": "Movement"
+    "displayName": "Movement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,21 +17,34 @@
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
-    "spiritId": {
-      "type": "uid"
-    },
-    "fromStorage": {
-      "type": "string"
-    },
-    "toStroage": {
-      "type": "string"
-    },
     "movementDate": {
-      "type": "datetime"
+      "type": "date"
     },
     "movementType": {
       "type": "enumeration",
-      "enum": ["Normal", "Aging"]
+      "enum": [
+        "Normal",
+        "Blending",
+        "Proofing",
+        "Filtering",
+        "Aging",
+        "Bottling"
+      ]
+    },
+    "to_storages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::storage.storage"
+    },
+    "from_storages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::storage.storage"
+    },
+    "spirits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::spirit.spirit"
     }
   }
 }

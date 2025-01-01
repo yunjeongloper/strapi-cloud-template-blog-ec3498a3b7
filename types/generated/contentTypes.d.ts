@@ -457,6 +457,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
   attributes: {
     abv: Schema.Attribute.Decimal;
     admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,7 +465,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     endPressure: Schema.Attribute.Decimal;
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
-    filterType: Schema.Attribute.Enumeration<['Carbon']>;
+    filterType: Schema.Attribute.Enumeration<['A05', 'A10']>;
     filtrationId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
@@ -478,12 +479,14 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
       'api::filtration.filtration'
     > &
       Schema.Attribute.Private;
+    movement: Schema.Attribute.Relation<'oneToOne', 'api::movement.movement'>;
     publishedAt: Schema.Attribute.DateTime;
+    secondEndPressure: Schema.Attribute.Decimal;
+    secondStartPressure: Schema.Attribute.Decimal;
     spirits: Schema.Attribute.Relation<'manyToMany', 'api::spirit.spirit'>;
     startAt: Schema.Attribute.DateTime;
     startPressure: Schema.Attribute.Decimal;
     startVolume: Schema.Attribute.Integer;
-    storage: Schema.Attribute.Relation<'oneToOne', 'api::storage.storage'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -524,6 +527,7 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
 export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
   collectionName: 'movements';
   info: {
+    description: '';
     displayName: 'Movement';
     pluralName: 'movements';
     singularName: 'movement';
@@ -535,21 +539,26 @@ export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    fromStorage: Schema.Attribute.String;
+    from_storages: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::storage.storage'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::movement.movement'
     > &
       Schema.Attribute.Private;
-    movementDate: Schema.Attribute.DateTime;
+    movementDate: Schema.Attribute.Date;
     movementId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
-    movementType: Schema.Attribute.Enumeration<['Normal', 'Aging']>;
+    movementType: Schema.Attribute.Enumeration<
+      ['Normal', 'Blending', 'Proofing', 'Filtering', 'Aging', 'Bottling']
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    spiritId: Schema.Attribute.UID;
-    toStroage: Schema.Attribute.String;
+    spirits: Schema.Attribute.Relation<'oneToMany', 'api::spirit.spirit'>;
+    to_storages: Schema.Attribute.Relation<'oneToMany', 'api::storage.storage'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -659,10 +668,6 @@ export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currentVolume: Schema.Attribute.Integer;
-    filtration: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::filtration.filtration'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

@@ -84,6 +84,11 @@
       "relation": "oneToMany",
       "target": "api::washing.washing",
       "mappedBy": "filtration"
+    },
+    "movement": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::movement.movement"
     }
   }
 }
