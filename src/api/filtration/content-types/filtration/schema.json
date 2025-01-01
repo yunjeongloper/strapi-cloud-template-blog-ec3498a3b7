@@ -23,8 +23,13 @@
       "target": "api::spirit.spirit",
       "inversedBy": "filtrations"
     },
-    "abv": {
-      "type": "decimal"
+    "filtrationType": {
+      "type": "enumeration",
+      "enum": [
+        "Non-chill",
+        "Chill",
+        "Final"
+      ]
     },
     "startAt": {
       "type": "datetime"
@@ -32,10 +37,17 @@
     "endAt": {
       "type": "datetime"
     },
-    "startVolume": {
-      "type": "integer"
+    "filterType": {
+      "type": "enumeration",
+      "enum": [
+        "A05",
+        "A10"
+      ]
     },
-    "finalVolume": {
+    "filterLength": {
+      "type": "decimal"
+    },
+    "filterQuantity": {
       "type": "integer"
     },
     "startPressure": {
@@ -44,30 +56,28 @@
     "endPressure": {
       "type": "decimal"
     },
-    "filtrationType": {
-      "type": "enumeration",
-      "enum": ["Non-chill", "Chill", "Final"]
-    },
-    "filterLength": {
+    "secondStartPressure": {
       "type": "decimal"
     },
-    "filterType": {
-      "type": "enumeration",
-      "enum": ["Carbon"]
+    "secondEndPressure": {
+      "type": "decimal"
     },
-    "filterQuantity": {
+    "startVolume": {
       "type": "integer"
+    },
+    "finalVolume": {
+      "type": "integer"
+    },
+    "abv": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "text"
     },
     "admin_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "admin::user"
-    },
-    "storage": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::storage.storage",
-      "inversedBy": "filtration"
     },
     "washings": {
       "type": "relation",
