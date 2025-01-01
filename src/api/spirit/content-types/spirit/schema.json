@@ -57,12 +57,6 @@
       "target": "api::proofing.proofing",
       "mappedBy": "spirit_id"
     },
-    "filtrations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::filtration.filtration",
-      "mappedBy": "spirit"
-    },
     "bottlings": {
       "type": "relation",
       "relation": "oneToMany",
@@ -71,6 +65,12 @@
     },
     "comment": {
       "type": "text"
+    },
+    "filtrations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::filtration.filtration",
+      "mappedBy": "spirits"
     }
   }
 }

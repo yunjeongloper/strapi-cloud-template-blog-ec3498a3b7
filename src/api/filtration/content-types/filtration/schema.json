@@ -17,27 +17,36 @@
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
-    "spirit": {
+    "spirits": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::spirit.spirit",
       "inversedBy": "filtrations"
     },
-    "filtrationType": {
-      "type": "enumeration",
-      "enum": ["Non-chill", "Chill", "Final"]
+    "abv": {
+      "type": "decimal"
     },
-    "startDateTime": {
+    "startAt": {
       "type": "datetime"
     },
-    "endDateTime": {
+    "endAt": {
       "type": "datetime"
+    },
+    "startVolume": {
+      "type": "integer"
+    },
+    "finalVolume": {
+      "type": "integer"
     },
     "startPressure": {
       "type": "decimal"
     },
     "endPressure": {
       "type": "decimal"
+    },
+    "filtrationType": {
+      "type": "enumeration",
+      "enum": ["Non-chill", "Chill", "Final"]
     },
     "filterLength": {
       "type": "decimal"
@@ -49,25 +58,16 @@
     "filterQuantity": {
       "type": "integer"
     },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    },
     "storage": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::storage.storage",
       "inversedBy": "filtration"
-    },
-    "startVolume": {
-      "type": "integer"
-    },
-    "finalVolume": {
-      "type": "integer"
-    },
-    "abv": {
-      "type": "decimal"
-    },
-    "admin_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
     },
     "washings": {
       "type": "relation",

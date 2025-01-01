@@ -460,7 +460,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    endDateTime: Schema.Attribute.DateTime;
+    endAt: Schema.Attribute.DateTime;
     endPressure: Schema.Attribute.Decimal;
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
@@ -479,8 +479,8 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    spirit: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
-    startDateTime: Schema.Attribute.DateTime;
+    spirits: Schema.Attribute.Relation<'manyToMany', 'api::spirit.spirit'>;
+    startAt: Schema.Attribute.DateTime;
     startPressure: Schema.Attribute.Decimal;
     startVolume: Schema.Attribute.Integer;
     storage: Schema.Attribute.Relation<'oneToOne', 'api::storage.storage'>;
@@ -546,7 +546,7 @@ export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
     movementId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
-    movementType: Schema.Attribute.Enumeration<['simple', 'aging']>;
+    movementType: Schema.Attribute.Enumeration<['Normal', 'Aging']>;
     publishedAt: Schema.Attribute.DateTime;
     spiritId: Schema.Attribute.UID;
     toStroage: Schema.Attribute.String;
@@ -615,7 +615,7 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
     currentVolume: Schema.Attribute.Integer;
     endAt: Schema.Attribute.DateTime;
     filtrations: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::filtration.filtration'
     >;
     initialVolume: Schema.Attribute.Integer;
