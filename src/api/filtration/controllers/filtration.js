@@ -27,8 +27,7 @@ module.exports = createCoreController(
           populate: {
             spirits: true, // 첫 번째 관계 데이터
             movement: {
-              // 두 번째 관계 데이터
-              populate: "to_storages", // 중첩 관계 데이터
+              populate: ["to_storages", "from_storages"], // 중첩 관계 데이터
             },
           },
         });

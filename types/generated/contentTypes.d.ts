@@ -578,6 +578,7 @@ export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
   attributes: {
     abv: Schema.Attribute.Decimal;
     addedWaterVolume: Schema.Attribute.Integer;
+    comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

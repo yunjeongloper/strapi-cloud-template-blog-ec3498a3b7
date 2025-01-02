@@ -42,6 +42,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::movement.movement"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }
