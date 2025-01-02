@@ -434,7 +434,6 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    spirit: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
     startDateTime: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -568,6 +567,7 @@ export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
 export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
   collectionName: 'proofings';
   info: {
+    description: '';
     displayName: 'Proofing';
     pluralName: 'proofings';
     singularName: 'proofing';
@@ -577,27 +577,28 @@ export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
   };
   attributes: {
     abv: Schema.Attribute.Decimal;
+    addedWaterVolume: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     finalVolume: Schema.Attribute.Integer;
+    initialVolume: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::proofing.proofing'
     > &
       Schema.Attribute.Private;
-    proofingDate: Schema.Attribute.DateTime;
+    movement: Schema.Attribute.Relation<'oneToOne', 'api::movement.movement'>;
+    proofingAt: Schema.Attribute.DateTime;
     proofingId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
     publishedAt: Schema.Attribute.DateTime;
-    rawSpiritVolume: Schema.Attribute.Integer;
-    spirit_id: Schema.Attribute.Relation<'manyToOne', 'api::spirit.spirit'>;
+    spirits: Schema.Attribute.Relation<'manyToMany', 'api::spirit.spirit'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    waterVolume: Schema.Attribute.Integer;
   };
 }
 
@@ -615,7 +616,6 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
   attributes: {
     abv: Schema.Attribute.Decimal;
     batchNumber: Schema.Attribute.String;
-    bottlings: Schema.Attribute.Relation<'oneToMany', 'api::bottling.bottling'>;
     comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -634,7 +634,10 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
       'api::spirit.spirit'
     > &
       Schema.Attribute.Private;
-    proofings: Schema.Attribute.Relation<'oneToMany', 'api::proofing.proofing'>;
+    proofings: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::proofing.proofing'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     serialNumber: Schema.Attribute.String;
     spiritId: Schema.Attribute.UID &

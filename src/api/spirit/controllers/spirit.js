@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
 /**
  * spirit controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+// @ts-ignore
+const { createCoreController } = require("@strapi/strapi").factories;
 
-module.exports = createCoreController('api::spirit.spirit');
+module.exports = createCoreController("api::spirit.spirit");

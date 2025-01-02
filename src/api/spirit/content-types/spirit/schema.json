@@ -51,18 +51,6 @@
     "currentLocation": {
       "type": "string"
     },
-    "proofings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::proofing.proofing",
-      "mappedBy": "spirit_id"
-    },
-    "bottlings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::bottling.bottling",
-      "mappedBy": "spirit"
-    },
     "comment": {
       "type": "text"
     },
@@ -70,6 +58,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::filtration.filtration",
+      "mappedBy": "spirits"
+    },
+    "proofings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::proofing.proofing",
       "mappedBy": "spirits"
     }
   }

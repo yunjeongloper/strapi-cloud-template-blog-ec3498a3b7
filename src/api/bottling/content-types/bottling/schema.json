@@ -22,12 +22,6 @@
       "target": "api::washing.washing",
       "inversedBy": "bottling"
     },
-    "spirit": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::spirit.spirit",
-      "inversedBy": "bottlings"
-    },
     "item": {
       "type": "relation",
       "relation": "oneToOne",

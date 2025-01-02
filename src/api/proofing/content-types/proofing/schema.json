@@ -4,7 +4,8 @@
   "info": {
     "singularName": "proofing",
     "pluralName": "proofings",
-    "displayName": "Proofing"
+    "displayName": "Proofing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,19 +17,13 @@
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
-    "spirit_id": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::spirit.spirit",
-      "inversedBy": "proofings"
-    },
-    "proofingDate": {
+    "proofingAt": {
       "type": "datetime"
     },
-    "rawSpiritVolume": {
+    "initialVolume": {
       "type": "integer"
     },
-    "waterVolume": {
+    "addedWaterVolume": {
       "type": "integer"
     },
     "finalVolume": {
@@ -36,6 +31,17 @@
     },
     "abv": {
       "type": "decimal"
+    },
+    "spirits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::spirit.spirit",
+      "inversedBy": "proofings"
+    },
+    "movement": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::movement.movement"
     }
   }
 }
