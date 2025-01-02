@@ -22,8 +22,6 @@ module.exports = createCoreController("api::storage.storage", ({ strapi }) => ({
       .service("api::storage.storage")
       .find(sanitizedQueryParams);
 
-    console.log("1", results);
-
     try {
       // 최신 Movement 데이터를 각 저장소에 추가
       enhancedResults = await Promise.all(
@@ -86,6 +84,11 @@ module.exports = createCoreController("api::storage.storage", ({ strapi }) => ({
       },
       sort: { updatedAt: "desc" }, // 최신 데이터 기준 정렬
       pagination: { limit: 1 }, // 최신 데이터 하나만 가져오기
+      populate: {
+        spirits: true, // Movement와 연결된 spirits 관계 포함
+        to_storages: true, // Movement와 연결된 to_storages 관계 포함
+        from_storages: true, // Movement와 연결된 to_storages 관계 포함
+      },
     });
 
     // 최신 Movement 데이터를 저장소 데이터에 추가
