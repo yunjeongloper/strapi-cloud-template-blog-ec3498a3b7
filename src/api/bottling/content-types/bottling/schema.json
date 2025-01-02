@@ -4,7 +4,8 @@
   "info": {
     "singularName": "bottling",
     "pluralName": "bottlings",
-    "displayName": "Bottling"
+    "displayName": "Bottling",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,33 +17,33 @@
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
-    "item": {
+    "washing": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::item.item"
+      "target": "api::washing.washing",
+      "inversedBy": "bottling"
     },
-    "bottlingDateTime": {
-      "type": "datetime"
+    "spirit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::spirit.spirit"
     },
-    "startDateTime": {
-      "type": "datetime"
+    "filtration": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::filtration.filtration"
     },
-    "endDateTime": {
-      "type": "datetime"
+    "startAt": {
+      "type": "date"
     },
-    "bottlingCount": {
+    "defectiveBottleCount": {
       "type": "integer"
     },
-    "defectiveCount": {
+    "finalBottleCount": {
       "type": "integer"
     },
     "comment": {
       "type": "text"
-    },
-    "admin_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
     }
   }
 }

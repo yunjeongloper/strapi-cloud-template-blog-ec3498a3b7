@@ -4,7 +4,8 @@
   "info": {
     "singularName": "washing",
     "pluralName": "washings",
-    "displayName": "Washing"
+    "displayName": "Washing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,11 +17,30 @@
       "required": true,
       "customField": "plugin::strapi-advanced-uuid.uuid"
     },
-    "filtration": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::filtration.filtration",
-      "inversedBy": "washings"
+    "itemName": {
+      "type": "string",
+      "required": false
+    },
+    "startAt": {
+      "type": "datetime"
+    },
+    "pressure": {
+      "type": "decimal"
+    },
+    "washedBottleCount": {
+      "type": "integer"
+    },
+    "defectiveBottleCount": {
+      "type": "integer"
+    },
+    "finalBottleCount": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "endAt": {
+      "type": "datetime"
     },
     "bottling": {
       "type": "relation",

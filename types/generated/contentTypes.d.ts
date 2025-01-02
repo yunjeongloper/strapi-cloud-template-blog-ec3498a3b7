@@ -406,6 +406,7 @@ export interface ApiBlendingBlending extends Struct.CollectionTypeSchema {
 export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
   collectionName: 'bottlings';
   info: {
+    description: '';
     displayName: 'Bottling';
     pluralName: 'bottlings';
     singularName: 'bottling';
@@ -414,9 +415,6 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    admin_user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
-    bottlingCount: Schema.Attribute.Integer;
-    bottlingDateTime: Schema.Attribute.DateTime;
     bottlingId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
@@ -424,9 +422,12 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    defectiveCount: Schema.Attribute.Integer;
-    endDateTime: Schema.Attribute.DateTime;
-    item: Schema.Attribute.Relation<'oneToOne', 'api::item.item'>;
+    defectiveBottleCount: Schema.Attribute.Integer;
+    filtration: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::filtration.filtration'
+    >;
+    finalBottleCount: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -434,7 +435,8 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    startDateTime: Schema.Attribute.DateTime;
+    spirit: Schema.Attribute.Relation<'oneToOne', 'api::spirit.spirit'>;
+    startAt: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,7 +466,9 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     endPressure: Schema.Attribute.Decimal;
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
-    filterType: Schema.Attribute.Enumeration<['A05', 'A10']>;
+    filterType: Schema.Attribute.Enumeration<
+      ['A05', 'A10', 'A05_20', 'A10_20']
+    >;
     filtrationId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
@@ -472,6 +476,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
       ['Non-chill', 'Chill', 'Final']
     >;
     finalVolume: Schema.Attribute.Integer;
+    initialVolume: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -485,11 +490,9 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     spirits: Schema.Attribute.Relation<'manyToMany', 'api::spirit.spirit'>;
     startAt: Schema.Attribute.DateTime;
     startPressure: Schema.Attribute.Decimal;
-    startVolume: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    washings: Schema.Attribute.Relation<'oneToMany', 'api::washing.washing'>;
   };
 }
 
@@ -695,6 +698,7 @@ export interface ApiStorageStorage extends Struct.CollectionTypeSchema {
 export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
   collectionName: 'washings';
   info: {
+    description: '';
     displayName: 'Washing';
     pluralName: 'washings';
     singularName: 'washing';
@@ -704,23 +708,27 @@ export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
   };
   attributes: {
     bottling: Schema.Attribute.Relation<'oneToOne', 'api::bottling.bottling'>;
+    comment: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    filtration: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::filtration.filtration'
-    >;
+    defectiveBottleCount: Schema.Attribute.Integer;
+    endAt: Schema.Attribute.DateTime;
+    finalBottleCount: Schema.Attribute.Integer;
+    itemName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::washing.washing'
     > &
       Schema.Attribute.Private;
+    pressure: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    startAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    washedBottleCount: Schema.Attribute.Integer;
     washingId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
