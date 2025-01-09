@@ -67,4 +67,32 @@ module.exports = createCoreController("api::spirit.spirit", ({ strapi }) => ({
     // 응답 반환
     return this.transformResponse(sanitizedResult);
   },
+  async findReadyToBottling(ctx) {
+    // 쿼리 파라미터 유효성 검사
+    await this.validateQuery(ctx);
+
+    // 쿼리 파라미터 정리 및 안전화
+    const sanitizedQueryParams = await this.sanitizeQuery(ctx);
+
+    // 원액 데이터 조회
+    // 1. 여과 공정 정보가 있는데
+    // 2. 여과 공정 타입이 'Final'인 경우
+    const results = await strapi.service("api::spirit.spirit").find({
+      ...sanitizedQueryParams,
+      filters: {
+        filtrations: {
+          filtrationType: "Final", // 해당 저장소가 이동 후 저장소에 포함된 경우
+        },
+      },
+      populate: {
+        filtrations: true,
+      },
+    });
+
+    // 데이터 출력 안전화
+    const sanitizedResult = await this.sanitizeOutput(results, ctx);
+
+    // 응답 반환
+    return this.transformResponse(sanitizedResult);
+  },
 }));
