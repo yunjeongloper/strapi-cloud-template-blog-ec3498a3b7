@@ -440,6 +440,7 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    usedSpiritVolume: Schema.Attribute.Integer;
     washing: Schema.Attribute.Relation<'oneToOne', 'api::washing.washing'>;
   };
 }
