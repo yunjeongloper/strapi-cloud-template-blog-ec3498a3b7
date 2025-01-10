@@ -54,11 +54,22 @@ module.exports = createCoreController("api::spirit.spirit", ({ strapi }) => ({
         sort: { updatedAt: "desc" },
       });
 
+    // 원액과 연관된 병입 데이터 조회
+    const bottlings = await strapi.service("api::bottling.bottling").find({
+      filters: {
+        spirit: {
+          id: spirit.id,
+        },
+      },
+      sort: { updatedAt: "desc" },
+    });
+
     // 데이터를 저장소 데이터에 추가
     const enhancedSpirit = {
       ...spirit,
       proofings,
       filtrations,
+      bottlings,
     };
 
     // 데이터 출력 안전화
