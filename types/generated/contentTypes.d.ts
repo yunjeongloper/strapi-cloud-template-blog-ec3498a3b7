@@ -607,6 +607,36 @@ export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiReleaseNoteReleaseNote extends Struct.CollectionTypeSchema {
+  collectionName: 'release_notes';
+  info: {
+    displayName: 'ReleaseNote';
+    pluralName: 'release-notes';
+    singularName: 'release-note';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    body: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::release-note.release-note'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    releaseDatetime: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
   collectionName: 'spirits';
   info: {
@@ -1251,6 +1281,7 @@ declare module '@strapi/strapi' {
       'api::item.item': ApiItemItem;
       'api::movement.movement': ApiMovementMovement;
       'api::proofing.proofing': ApiProofingProofing;
+      'api::release-note.release-note': ApiReleaseNoteReleaseNote;
       'api::spirit.spirit': ApiSpiritSpirit;
       'api::storage.storage': ApiStorageStorage;
       'api::washing.washing': ApiWashingWashing;
