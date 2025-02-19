@@ -47,6 +47,9 @@
     },
     "usedSpiritVolume": {
       "type": "integer"
+    },
+    "startAtStr": {
+      "type": "string"
     }
   }
 }

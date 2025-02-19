@@ -437,6 +437,7 @@ export interface ApiBottlingBottling extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     spirit: Schema.Attribute.Relation<'oneToOne', 'api::spirit.spirit'>;
     startAt: Schema.Attribute.Date;
+    startAtStr: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,6 +465,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     endAt: Schema.Attribute.DateTime;
+    endAtStr: Schema.Attribute.String;
     endPressure: Schema.Attribute.Decimal;
     filterLength: Schema.Attribute.Decimal;
     filterQuantity: Schema.Attribute.Integer;
@@ -490,6 +492,7 @@ export interface ApiFiltrationFiltration extends Struct.CollectionTypeSchema {
     secondStartPressure: Schema.Attribute.Decimal;
     spirits: Schema.Attribute.Relation<'manyToMany', 'api::spirit.spirit'>;
     startAt: Schema.Attribute.DateTime;
+    startAtStr: Schema.Attribute.String;
     startPressure: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -553,6 +556,7 @@ export interface ApiMovementMovement extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     movementDate: Schema.Attribute.Date;
+    movementDateStr: Schema.Attribute.String;
     movementId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
@@ -596,6 +600,7 @@ export interface ApiProofingProofing extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     movement: Schema.Attribute.Relation<'oneToOne', 'api::movement.movement'>;
     proofingAt: Schema.Attribute.DateTime;
+    proofingAtStr: Schema.Attribute.String;
     proofingId: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.CustomField<'plugin::strapi-advanced-uuid.uuid'>;
@@ -658,6 +663,7 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
     currentLocation: Schema.Attribute.String;
     currentVolume: Schema.Attribute.Integer;
     endAt: Schema.Attribute.DateTime;
+    endAtStr: Schema.Attribute.String;
     filtrations: Schema.Attribute.Relation<
       'manyToMany',
       'api::filtration.filtration'
@@ -682,6 +688,7 @@ export interface ApiSpiritSpirit extends Struct.CollectionTypeSchema {
       ['Distilled', 'Blended', 'Aged', 'Expired', 'Disposed']
     >;
     startAt: Schema.Attribute.DateTime;
+    startAtStr: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -745,6 +752,7 @@ export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     defectiveBottleCount: Schema.Attribute.Integer;
     endAt: Schema.Attribute.DateTime;
+    endAtStr: Schema.Attribute.String;
     finalBottleCount: Schema.Attribute.Integer;
     itemName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -756,6 +764,7 @@ export interface ApiWashingWashing extends Struct.CollectionTypeSchema {
     pressure: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     startAt: Schema.Attribute.DateTime;
+    startAtStr: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

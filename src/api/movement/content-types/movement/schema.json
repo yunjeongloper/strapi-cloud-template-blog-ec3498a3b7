@@ -45,6 +45,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::spirit.spirit"
+    },
+    "movementDateStr": {
+      "type": "string"
     }
   }
 }

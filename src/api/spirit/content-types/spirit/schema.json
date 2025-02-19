@@ -65,6 +65,12 @@
       "relation": "manyToMany",
       "target": "api::proofing.proofing",
       "mappedBy": "spirits"
+    },
+    "startAtStr": {
+      "type": "string"
+    },
+    "endAtStr": {
+      "type": "string"
     }
   }
 }

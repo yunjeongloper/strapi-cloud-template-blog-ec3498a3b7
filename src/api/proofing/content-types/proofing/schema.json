@@ -45,6 +45,9 @@
     },
     "comment": {
       "type": "text"
+    },
+    "proofingAtStr": {
+      "type": "string"
     }
   }
 }
